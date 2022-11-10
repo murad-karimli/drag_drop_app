@@ -145,10 +145,10 @@ function dragDrop() {
     if(second_el===2){
         var elems=document.querySelectorAll("#second-el");
         for(let i=0;i<elems.length;i++){
-            if(elems[i].innerText=="Sistem Proqram Təminatı"){
+            if(elems[i].innerText=="Sistem Proqram Təminatı"&&elems[i].parentElement.className=="main-el"){
                 elems[i].parentElement.insertAdjacentHTML("beforeend",bazaAndServisHTML)
                 drops=document.querySelectorAll(".droppable")
-            }else if(elems[i].innerText=="İnstarumental Proqram Təminatı"){
+            }else if(elems[i].innerText=="İnstarumental Proqram Təminatı" &&elems[i].parentElement.className=="main-el"){
 
                 elems[i].parentElement.insertAdjacentHTML("beforeend",instrumentalHTML)
                 drops=document.querySelectorAll(".droppable")
@@ -232,6 +232,7 @@ function dragEnd() {
 
 var bazaAndServisHTML=`
 <div class="flex">
+<p>Sistem proqram təminatı hansılardır?</p>
 <div id="sis-el" class="droppable gaps"></div>
 <div id="sis-el" class="droppable gaps"></div>
 </div>
@@ -240,6 +241,7 @@ var bazaAndServisHTML=`
 var thirdHTML=`
 
 <div class="third ">
+<p>Servis sistem proqram təminatı hansılardır?</p>
   <div id="third-el" class="droppable gaps"></div>
   <div id="third-el" class="droppable gaps"></div>
   <div id="third-el" class="droppable gaps"></div>
@@ -249,6 +251,7 @@ var thirdHTML=`
 `;
 var fourthHTML=`
 <div class="fourth ">
+<p>Baza sistem proqram təminatı hansılardr?</p>
   <div id="fourth-el" class="droppable gaps"></div>
   <div id="fourth-el" class="droppable gaps"></div>
   <div id="fourth-el" class="droppable gaps"></div>
@@ -256,6 +259,7 @@ var fourthHTML=`
 `
 var instrumentalHTML=`
 <div class="fifth">
+<p>İnstrumental proqram təminatı hansılardr?</p>
 <div id="fifth-el" class="droppable gaps"></div>
 <div id="fifth-el" class="droppable gaps"></div>
 <div id="fifth-el" class="droppable gaps"></div>
@@ -263,6 +267,7 @@ var instrumentalHTML=`
 `
 var tetbiqiHTML=`
 <div class="sixth">
+<p>Tətbiqi proqram təminatı hansılardr?</p>
 <div id="sixth-el" class="droppable gaps"></div>
 <div id="sixth-el" class="droppable gaps"></div>
 <div id="sixth-el" class="droppable gaps"></div>

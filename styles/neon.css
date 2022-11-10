@@ -3,11 +3,29 @@
 *::after {
   box-sizing: border-box;
 }
-
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+header{
+  display:flex;
+  justify-content:space-between;
+}
 body .neon-con {
-  width: 25%;
+  width: 80%;
+  padding:2em;
   margin: auto;
-  
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  border-radius:1em;
+  box-shadow:box-shadow: 0 0 1px #ddd, 0 0 1px #eee, 0 0 2px #fff;
   /* display: flex;
   justify-content: space-between;
   flex-wrap: wrap; */
@@ -15,11 +33,14 @@ body .neon-con {
   background-image: linear-gradient(to right, #28313b, #485461);
 }
 body .neon-con .neon {
-  width: 100%;
+  width: 30%;
   height: 28%;
   margin-bottom: 20px;
   display:block ;
   padding:5px;
+  animation-name: bounce;
+  animation-duration:5s;
+  animation-iteration-count: infinite
   /* display: flex;
     justify-content: space-between;
     align-items: center; */
@@ -33,7 +54,7 @@ body .neon-con .neon span {
   margin: auto;
   text-decoration: none;
   font-size: 14px;
-  text-transform: uppercase;
+  
   color: #777;
   box-shadow: 0 0 3px #ddd, 0 0 2px #eee, 0 0 6px #fff;
   text-align: center;

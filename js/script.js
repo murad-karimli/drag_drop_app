@@ -3,13 +3,19 @@ const truthy = document.querySelector("#true")
 var drops = document.querySelectorAll(".droppable")
 const wrong = document.querySelector("#wrong")
 const main=document.querySelector(".main")
+const main_elms=document.querySelectorAll(".main-el")
 const container=document.querySelector(".container")
+const again_btn=document.getElementById("again")
 // $(document).ready(function() {});
-
+let second_el=0;
+let elementsWith3=0;
+let elementsWith4=0;
 let true_answers = 0;
 let el;
+let sis_count=0;
 let false_answers = 0;
 let visibleIDs = 1;
+
 
 truthy.innerText = true_answers;
 wrong.innerText = false_answers;
@@ -17,109 +23,171 @@ let dragItem = null;
 let dropItem = null;
 var allData = [
     {
-        id: 2,
+        id: "second-el",
         value: "Sistem Proqram Təminatı",
     },
     {
-        id: 4,
-        value: "Tətbiqi Proqram Təminatı",
-    },
-    {
-        id: 3,
+        id: "second-el",
         value: "İnstarumental Proqram Təminatı",
     },
     {
-        id: 1,
-        value: "Proqram Təminatı",
+        id: "second-el",
+        value: "Tətbiqi Proqram Təminatı",
     },
     {
-        id: 6,
-        value: "Servis",
-    },
-    {
-        id: 10,
-        value: "Diaqnostik Proqram",
-    },
-    {
-        id: 5,
+        id: "sis-el",
         value: "Baza",
     },
     {
-        id: 7,
+        id: "sis-el",
+        value: "Servis",
+    },
+    {
+        id: "third-el",
         value: "Əməliyyat Sistemləri",
     },
     {
-        id: 8,
+        id: "third-el",
         value: "Əməliyyat Örtükləri",
     },
     {
-        id: 11,
-        value: "Antiviruslar",
-    },
-    {
-        id: 9,
+        id: "third-el",
         value: "Şəbəkə Əməliyyat sistemləri",
     },
     {
-        id: 14,
-        value: "Proqramlaşdırmanın inteqrallaşdırılmış mühiti",
+        id: "fourth-el",
+        value: "Diaqnostik Proqram",
     },
     {
-        id: 12,
+        id: "fourth-el",
+        value: "Antiviruslar",
+    },
+    {
+        id: "fourth-el",
         value: "Utilitlər",
     },
     {
-        id: 13,
+        id: "fifth-el",
         value: "Proqramlaşdırma dilləri və Sistemləri",
     },
     {
-        id: 17,
-        value: "Üsulyönlü",
+        id: "fifth-el",
+        value: "Proqramlaşdırmanın inteqrallaşdırılmış mühiti",
     },
     {
-        id: 15,
+        id: "fifth-el",
         value: "Proqram kompleksləi",
     },
     {
-        id: 19,
-        value: "Qlobal komputer şəbəkələri",
-    },
-    {
-        id: 16,
+        id: "sixth-el",
         value: "Ümumi təyinatlı",
     },
     {
-        id: 18,
+        id: "sixth-el",
+        value: "Üsulyönlü",
+    },
+    {
+        id: "sixth-el",
         value: "Problem yönlü",
     },
+    {
+        id: "sixth-el",
+        value: "Qlobal komputer şəbəkələri",
+    },
 ]
+var changedData=[];
 function options(el) {
     var html = `
-    <div id="${el.id}." class="neon option-el" draggable="true">
+    <div id="${el.id}" class="neon draggable" draggable="true">
    <span> ${el.value}
-      <svg height="40" width="400">
-         <polyline points="10,0 340,0 340,32 ,180,32 ,190,990"></polyline>
-       </svg>
+      
     </span>
  </div>
 
  `
     options_div.insertAdjacentHTML("beforeend", html);
 }
-for (let i = 0; i < allData.length; i++) {
-    options(allData[i])
+{/* <polyline points="90,0 470,0 470,32 ,180,32 ,190,990"></polyline> */}
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+  
+ changedData= shuffle(allData)
+for(let i=0;i<changedData.length;i++){
+    options(changedData[i])
 }
-const items = document.querySelectorAll(".option-el");
+
+again_btn.addEventListener("click",()=>{
+    window.location.reload()
+})
+function dragDrop() {
+    
+    if (dropItem.id === dragItem.id) {
+        dropItem.innerText = dragItem.innerText;
+        true_answers++;
+        truthy.innerText = true_answers;
+        
+    }
+    if(second_el===2){
+        var elems=document.querySelectorAll("#second-el");
+        for(let i=0;i<elems.length;i++){
+            if(elems[i].innerText=="Sistem Proqram Təminatı"){
+                elems[i].parentElement.insertAdjacentHTML("beforeend",bazaAndServisHTML)
+                drops=document.querySelectorAll(".droppable")
+            }else if(elems[i].innerText=="İnstarumental Proqram Təminatı"){
+
+                elems[i].parentElement.insertAdjacentHTML("beforeend",instrumentalHTML)
+                drops=document.querySelectorAll(".droppable")
+            }else if(elems[i].innerText=="Tətbiqi Proqram Təminatı"&&elems[i].parentElement.className=="main-el"){
+
+                elems[i].parentElement.insertAdjacentHTML("beforeend",tetbiqiHTML)
+                drops=document.querySelectorAll(".droppable")
+            }
+        }
+    }
+    if(sis_count==1){
+        var siss=document.querySelectorAll("#sis-el");
+        for(let i=0;i<siss.length;i++){
+            if(siss[i].innerText=="Servis" &&siss[i].parentElement.parentElement.className=="main-el"){
+                siss[i].insertAdjacentHTML("afterend",fourthHTML)
+                drops=document.querySelectorAll(".droppable")
+            }
+            if(siss[i].innerText=="Baza"&& siss[i].parentElement.parentElement.className=="main-el"){
+                siss[i].insertAdjacentHTML("afterend",thirdHTML)
+                drops=document.querySelectorAll(".droppable")
+            }
+        }
+
+    }
+
+}
+const items = document.querySelectorAll(".draggable");
 items.forEach(item => {
     item.addEventListener('dragstart', dragStart)
     item.addEventListener('dragend', dragEnd)
 
 });
-drops.forEach(drop => {
-    drop.addEventListener('dragover', dragOver);
-    drop.addEventListener('drop', dragDrop);
-    drop.addEventListener('dragleave', dragLeave);
-});
+setInterval(()=>{
+    drops.forEach(drop => {
+        drop.addEventListener('dragover', dragOver);
+        drop.addEventListener('drop', dragDrop);
+        drop.addEventListener('dragleave', dragLeave);
+    });
+},500)
 
 function dragLeave(){
     this.classList.remove("animation")
@@ -140,93 +208,64 @@ function dragEnd() {
     console.log('drag ended');
 
     console.log(this)
-    if (dropItem.id+"." === dragItem.id) {
+    if (dropItem.id === dragItem.id) {
         this.remove()
     }
     else {
         this.className = 'neon'
         false_answers++;
         wrong.innerText = false_answers;
-    }
-
-    if (this.id == 1) {
-        // console.log("aa")
-        for (let i = 2; i < 5; i++) {
-            el = document.getElementById(`${i}`);
-            el.className = "droppable gaps";        
-            console.log(el)
-        }
-    }
-    else if (this.id == 4) {
-        for (let i = 5; i < 13; i++) {
-            el = document.getElementById(`${i}`);
-            el.className = "droppable gaps";        
-            console.log(el)
-        }
-    } else if (this.id == 12) {
+      
         
-        for (let i = 13; i < 16; i++) {
-            el = document.getElementById(`${i}`);
-            el.className = "droppable gaps";        
-            console.log(el)
-        }
-    } else if (this.id ==15) {
-       
-        for (let i = 15; i < 20; i++) {
-            el = document.getElementById(`${i}`);
-            el.className = "droppable gaps";        
-            console.log(el)
-        }
     }
 
-
+    if (this.id == "second-el") {
+        second_el++;
+    }
+    if(this.id=="sis-el"){
+        sis_count++;
+    }
+   
     dragItem = null;
 }
-function dragDrop() {
-    console.log('drag dropped');
-    console.log(dragItem)
-    if (dropItem.id+"." === dragItem.id) {
-        dropItem.innerText = dragItem.innerText;
-        true_answers++;
-        truthy.innerText = true_answers;
-    }
 
-}
 
-console.log(true_answers, false_answers)
+var bazaAndServisHTML=`
+<div class="flex">
+<div id="sis-el" class="droppable gaps"></div>
+<div id="sis-el" class="droppable gaps"></div>
+</div>
+`
 
-// const firstHTML = `
-// <div class="second ">
-// <div id="2" class="droppable gaps  "></div>
-// <div id="3" class="droppable gaps  "></div>
-// <div id="4" class="droppable gaps  "></div>
-// </div>
-// `
-// const secondHTML = `
-// <div class="third ">
-// <div id="5" class="droppable gaps "></div>
-// <div id="7" class="droppable gaps "></div>
-// <div id="8" class="droppable gaps "></div>
-// <div id="9" class="droppable gaps "></div>
-// </div>
+var thirdHTML=`
 
-// <div class="fourth ">
-// <div id="6" class="droppable gaps "></div>
-// <div id="10" class="droppable gaps "></div>
-// <div id="11" class="droppable gaps "></div>
-// <div id="12" class="droppable gaps "></div>
-// </div>`
-// const thirdHTML = `
-// <div class="fifth ">
-//           <div id="13" class="droppable gaps "></div>
-//           <div id="14" class="droppable gaps "></div>
-//           <div id="15" class="droppable gaps "></div>
-//         </div>`
-// const fourthHTML = `
-// <div class="sixth ">
-//           <div id="16" class="droppable gaps hidden"></div>
-//           <div id="17" class="droppable gaps hidden"></div>
-//           <div id="18" class="droppable gaps hidden"></div>
-//           <div id="19" class="droppable gaps hidden"></div>
-//         </div>  
-//         `
+<div class="third ">
+  <div id="third-el" class="droppable gaps"></div>
+  <div id="third-el" class="droppable gaps"></div>
+  <div id="third-el" class="droppable gaps"></div>
+</div>  
+
+
+`;
+var fourthHTML=`
+<div class="fourth ">
+  <div id="fourth-el" class="droppable gaps"></div>
+  <div id="fourth-el" class="droppable gaps"></div>
+  <div id="fourth-el" class="droppable gaps"></div>
+</div>
+`
+var instrumentalHTML=`
+<div class="fifth">
+<div id="fifth-el" class="droppable gaps"></div>
+<div id="fifth-el" class="droppable gaps"></div>
+<div id="fifth-el" class="droppable gaps"></div>
+</div>
+`
+var tetbiqiHTML=`
+<div class="sixth">
+<div id="sixth-el" class="droppable gaps"></div>
+<div id="sixth-el" class="droppable gaps"></div>
+<div id="sixth-el" class="droppable gaps"></div>
+<div id="sixth-el" class="droppable gaps"></div>
+</div>
+`

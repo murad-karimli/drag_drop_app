@@ -1,16 +1,37 @@
 body{
     background-image: linear-gradient(to right, #28313B, #485461);
 }
-
+#again{
+    border:none;
+    border-radius:15px;
+    padding:15px;
+    color:#fff;
+    margin:1.5em;
+    box-shadow:box-shadow: 0 0 1px #ddd, 0 0 5px #eee, 0 0 2px #fff;
+    width:8em;
+    height:4.5em;
+    background:linear-gradient(to right, #28213B, #425a61);
+    font-weight:700;
+    font-size:15px;
+}
+#again:hover{
+    background:rgb(32,43,56);
+    transition:all 1s ease-in-out;
+}
 .main-con{
     display:flex;
     justify-content:space-between;
+    flex-direction:column;
+    width:90%;
+    margin:auto;
 }
 .hidden{
     display:none !important;
 }
 .scheme{
-    width:75%;
+    width:80%;
+    margin:auto;
+    padding:1em;
 }
 div {
     text-align:center;
@@ -35,26 +56,23 @@ div {
     margin-bottom:3em;
 }
 
-@keyframes bounce {
-    0%, 100% {
-      transform: translateY(-25%);
-      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    }
-    50% {
-      transform: translateY(0);
-      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    }
+
+  .flex{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    margin:10px;
   }
 .gaps{
     padding: 1px;
     height: 5vh;
-    width: 90%;
-    margin-bottom:1em;
+    width: 100%;
+    margin-bottom:2em;
     border:1px solid #777;
     margin: auto;
     text-decoration: none;
     font-size: 14px;
-    text-transform: uppercase;
+  
     background:;
     color: #777;
     background-image: linear-gradient(to right, #28313B, #485461);
@@ -80,15 +98,9 @@ div {
     height:3em;
 }
 
-.second{
-    display:flex;
-    border:none;
-    margin:10px;
-    margin-top:2em;
-    justify-content:space-between;  
-}
-.second div{
-    width:28%;
+.sec{
+    
+    margin-top:1.2em;
     height:3em;
 }
 .main{
@@ -97,7 +109,14 @@ div {
     justify-content:space-between;
     border:none;
 }
-
+.flex div{
+    margin-bottom:1em;
+    margin-top:1em;
+}
+.main-el{
+    width:30%;
+    
+}
 .third{
     display:flex;
     flex-direction:column;
@@ -137,7 +156,7 @@ div {
     border:none;
     margin:10px;
     margin-top:2em;
-    width:24%;
+    width:100%;
 }
 .fifth div{
     margin-bottom:2em;
@@ -145,9 +164,9 @@ div {
 }
 .sixth{
     border:none;
-    width:27%;
-    margin:10px
+    margin:10px;
     margin-top:2em;
+    width:100%;
 
 }
  .sixth div{

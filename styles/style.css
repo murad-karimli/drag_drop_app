@@ -66,9 +66,12 @@ div {
 
   .flex{
     display:flex;
-    flex-direction:column;
     justify-content:space-between;
     margin:10px;
+  }
+  .flex div{
+    margin:10px;
+
   }
 .gaps{
     padding: 1px;
@@ -89,6 +92,9 @@ div {
     align-items: center;
     transition: 1s;
     transition-delay: 0.3s;
+}
+.aa{
+    width:33% !important;
 }
 .first{
     display:block;
